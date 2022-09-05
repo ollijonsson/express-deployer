@@ -1,0 +1,18 @@
+{
+    "compilerOptions": {
+        "lib": [
+            "ESNext",
+            "ES2018",
+            "DOM"
+        ],
+        "module": "CommonJS",
+        "moduleResolution": "node",
+        "strict": true,
+        "target": "ESNext",
+        "sourceMap": true,
+        "esModuleInterop": true
+    },
+    "exclude": [
+        "playground"
+    ]
+}

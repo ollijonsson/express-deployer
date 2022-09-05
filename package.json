@@ -1,0 +1,32 @@
+{
+  "name": "rapid-deployer",
+  "version": "0.9.0",
+  "dependencies": {
+    "@openzeppelin/contracts": "^4.7.3",
+    "@typechain/truffle-v5": "^8.0.1",
+    "@types/bn.js": "^5.1.1",
+    "@types/chai": "^4.3.3",
+    "@types/mocha": "^9.1.1",
+    "@types/web3": "^1.2.2",
+    "@uniswap/lib": "^4.0.1-alpha",
+    "concurrently": "^7.3.0",
+    "cross-var": "^1.1.0",
+    "truffle": "^5.5.28",
+    "typechain": "^8.1.0",
+    "typescript": "^4.8.2",
+    "web3": "^1.7.5"
+  },
+  "scripts": {
+    "generate-types": "typechain --target=truffle-v5 'build/contracts/*.json'",
+    "compile": "npx truffle compile && npm run generate-types",
+    "compile-and-test": "npx truffle compile && npm run generate-types && truffle test --compile-none",
+    "migrate": "npm run transpile-migrations && truffle migrate",
+    "transpile-migrations": "tsc -p ./tsconfig.migrate.json --outDir ./migrations",
+    "typecheck": "npx truffle compile && npm run generate-types && tsc --noEmit",
+    "ganache": "ganache --instamine eager -q",
+    "ganache:fork": "ganache --fork $npm_config_fork_rpc --instamine eager -q",
+    "truffle:test": "truffle test",
+    "test": "concurrently --names 'ganache,truffle' --prefix-colors magenta,cyan -k --success first \"npm:ganache\" \"npm:truffle:test\"",
+    "test:fork": "concurrently --names 'ganache,truffle' --hide ganache --prefix-colors magenta,cyan -k --success first \"npm:ganache:fork\" \"npm:truffle:test\""
+  }
+}
