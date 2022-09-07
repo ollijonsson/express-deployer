@@ -19,6 +19,7 @@ The express-deployer **boilerplate** is a solidity development framework using t
 
 ```console
 npm install
+npm run compile
 npm run transpile-migrations
 npm run test
 ```

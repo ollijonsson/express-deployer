@@ -10,7 +10,16 @@
         "strict": true,
         "target": "ESNext",
         "sourceMap": true,
-        "esModuleInterop": true
+        "esModuleInterop": true,
+        "types": [
+            "@types/node",
+            "@types/chai",
+            "@types/mocha"
+        ],
+        "typeRoots": [
+            "./node_modules/@types",
+            "./types"
+        ]
     },
     "exclude": [
         "playground"
